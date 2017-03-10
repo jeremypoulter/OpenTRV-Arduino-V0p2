@@ -1,0 +1,22 @@
+{
+  "build": {
+    "core": "arduino", 
+    "extra_flags": "-DARDUINO_ARCH_AVR -DAVR_V0P2", 
+    "f_cpu": "1000000L", 
+    "mcu": "atmega328p", 
+    "variant": "standard"
+  }, 
+  "frameworks": [
+    "arduino"
+  ], 
+  "name": "OpenTRV V0p2", 
+  "upload": {
+    "maximum_ram_size": 2048, 
+    "maximum_size": 30720, 
+    "protocol": "arduino", 
+    "require_upload_port": true, 
+    "speed": 4800
+  }, 
+  "url": "http://opentrv.org.uk/", 
+  "vendor": "OpenTRV"
+}

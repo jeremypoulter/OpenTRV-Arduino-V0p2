@@ -4,7 +4,7 @@ under the Apache Licence, Version 2.0 (the "Licence");
 you may not use this file except in compliance
 with the Licence. You may obtain a copy of the Licence at
 
-http://www.apache.org/licenses/LICENSE-2.0 
+http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing,
 software distributed under the Licence is distributed on an
@@ -29,6 +29,8 @@ Author(s) / Copyright (s): Damon Hart-Davis 2013--2017
 
   Basic AVR power consumption ticking an (empty) control loop at ~0.5Hz should be ~1uA.
  */
+
+#include <Arduino.h>
 
 #if defined(ENABLE_OTSECUREFRAME_ENCODING_SUPPORT) || defined(ENABLE_SECURE_RADIO_BEACON)
 #include <OTAESGCM.h>
