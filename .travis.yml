@@ -1,5 +1,28 @@
-language: cpp
+# Even though this is a C++ project Platform IDE needs the python image and
+# Arduino IDE is self contained
+language: python
+python:
+    - "2.7"
+
+env:
+  - SCRIPT=V0p2_ci_arduino.sh
+  - SCRIPT=V0p2_primary_CONFIGs_compile_tests.sh
+  - SCRIPT=V0p2_minimal_hw_compilation_tests.sh
+  - SCRIPT=V0p2_ci_platformio.sh
+    PIO_ENV=V0p2_Rev11_Sensor
+  - SCRIPT=V0p2_ci_platformio.sh
+    PIO_ENV=V0p2_Rev11_Secure_Sensor
+  - SCRIPT=V0p2_ci_platformio.sh
+    PIO_ENV=V0p2_Rev11_StatsHub
+  - SCRIPT=V0p2_ci_platformio.sh
+    PIO_ENV=V0p2_Rev11_Secure_StatsHub
+
+cache:
+    directories:
+        - "~/.platformio"
+
 before_install:
+  # Install Arduino IDE
   - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_1.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :1 -ac -screen 0 1280x1024x16 -extension RANDR"
   - sleep 3
   - export DISPLAY=:1.0
@@ -12,6 +35,7 @@ before_install:
   - sudo mv arduino-1.8.1 /usr/local/share/arduino
   - sudo ln -s /usr/local/share/arduino/arduino /usr/local/bin/arduino
 install:
+  # Setup Arduino IDE
   - arduino --pref "boardsmanager.additional.urls=https://raw.githubusercontent.com/opentrv/OpenTRV-Config/master/Arduino/package_opentrv_index.json" --save-prefs
   - arduino --install-boards "opentrv:avr"
   - arduino --pref "boardsmanager.additional.urls=" --save-prefs
@@ -19,10 +43,14 @@ install:
   - ln -s $PWD/OTAESGCM-master/content/OTAESGCM /usr/local/share/arduino/libraries/OTAESGCM
   - ln -s $PWD/OTRadioLink-master/content/OTRadioLink /usr/local/share/arduino/libraries/OTRadioLink
 
+  # Install Platform IO
+  - pip install -U platformio
+  - mkdir -p ~/.platformio/boards
+  - cp $TRAVIS_BUILD_DIR/Wand/Firmware/wand*.json ~/.platformio/boards
+
 script:
-  - arduino --verify --board opentrv:avr:opentrv_v0p2 $PWD/Arduino/V0p2_Main/V0p2_Main.ino
-  - ./V0p2_primary_CONFIGs_compile_tests.sh
-  - ./V0p2_minimal_hw_compilation_tests.sh
+  - bash $SCRIPT
+
 notifications:
   email:
     recipients:
