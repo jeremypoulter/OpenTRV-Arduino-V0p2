@@ -62,7 +62,7 @@ install:
   # Install Platform IO
   - pip install -U platformio
   - mkdir -p ~/.platformio/boards
-  - cp $TRAVIS_BUILD_DIR/Arduino/hardware/V0p2.json ~/.platformio/boards
+  - cp $TRAVIS_BUILD_DIR/Arduino/hardware/v0p2.json ~/.platformio/boards
 
 script:
   - bash $SCRIPT
