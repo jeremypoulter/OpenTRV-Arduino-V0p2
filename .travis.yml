@@ -6,8 +6,24 @@ python:
 
 env:
   - SCRIPT=V0p2_ci_arduino.sh
+    BUILD_TARGET=opentrv:avr:opentrv_v0p2
+    INO_ENV=Arduino/V0p2_Main/V0p2_Main.ino
+  - SCRIPT=V0p2_ci_arduino.sh
+    BUILD_TARGET=opentrv:avr:opentrv_v0p2
+    INO_ENV=Arduino/hardware/V0p2_Main_PCB_REV7_DORM1_and_REV8/testsuite/201702/REV7EncoderTest/REV7EncoderTest.ino
+  - SCRIPT=V0p2_ci_arduino.sh
+    BUILD_TARGET=opentrv:avr:opentrv_v0p2
+    INO_ENV=Arduino/hardware/V0p2_Main_PCB_REV7_DORM1_and_REV8/REV7HardwareTest/REV7HardwareTest.ino
+  - SCRIPT=V0p2_ci_arduino.sh
+    BUILD_TARGET=opentrv:avr:opentrv_v0p2
+    INO_ENV=Arduino/hardware/V0p2_Main_PCB_REV7_DORM1_and_REV8/REV8HardwareTest/REV8HardwareTest.ino
+  - SCRIPT=V0p2_ci_arduino.sh
+    BUILD_TARGET=opentrv:avr:opentrv_v0p2
+    INO_ENV=Arduino/hardware/REV10/REV10HardwareTest/REV10HardwareTest.ino
+  - SCRIPT=V0p2_ci_arduino.sh
+    BUILD_TARGET=opentrv:avr:opentrv_v0p2
+    INO_ENV=Arduino/hardware/REV11HardwareTest/REV11HardwareTest.ino
   - SCRIPT=V0p2_primary_CONFIGs_compile_tests.sh
-  - SCRIPT=V0p2_minimal_hw_compilation_tests.sh
   - SCRIPT=V0p2_ci_platformio.sh
     PIO_ENV=V0p2_Rev11_Sensor
   - SCRIPT=V0p2_ci_platformio.sh

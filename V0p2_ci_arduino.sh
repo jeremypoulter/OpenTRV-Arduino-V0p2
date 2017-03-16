@@ -1,3 +1,14 @@
 #!/bin/sh -e
 # Build with the default config with Arduino IDE
-arduino --verify --board opentrv:avr:opentrv_v0p2 $PWD/Arduino/V0p2_Main/V0p2_Main.ino
+
+if [ -z $INO_ENV ]; then
+  echo "INO_ENV not set"
+  exit 1
+fi
+if [ -z $BUILD_TARGET ]; then
+  echo "BUILD_TARGET not set"
+  exit 1
+fi
+
+echo "@@@@@@" Testing $INO_ENV [$BUILD_TARGET]
+arduino --verify --board $BUILD_TARGET $INO_ENV
