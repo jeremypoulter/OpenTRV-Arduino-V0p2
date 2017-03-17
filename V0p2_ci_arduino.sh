@@ -11,4 +11,7 @@ if [ -z $BUILD_TARGET ]; then
 fi
 
 echo "@@@@@@" Testing $INO_ENV [$BUILD_TARGET]
-arduino --verify --board $BUILD_TARGET $INO_ENV
+arduino --verbose --verify --board $BUILD_TARGET $INO_ENV
+RET=$?
+echo Exited with $RET
+exit $RET
