@@ -12,6 +12,3 @@ fi
 
 echo "@@@@@@" Testing $INO_ENV [$BUILD_TARGET]
 arduino --verbose --verify --board $BUILD_TARGET $INO_ENV
-RET=$?
-echo Exited with $RET
-exit $RET

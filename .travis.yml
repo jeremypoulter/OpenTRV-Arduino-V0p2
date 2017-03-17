@@ -22,7 +22,7 @@ env:
     INO_ENV=Arduino/hardware/REV10/REV10HardwareTest/REV10HardwareTest.ino
   - SCRIPT=V0p2_ci_arduino.sh
     BUILD_TARGET=opentrv:avr:opentrv_v0p2
-    INO_ENV=Arduino/hardware/REV11HardwareTest/REV11HardwareTest.ino
+    INO_ENV=Arduino/hardware/REV11/REV11HardwareTest/REV11HardwareTest.ino
   - SCRIPT=V0p2_primary_CONFIGs_compile_tests.sh
   - SCRIPT=V0p2_ci_platformio.sh
     PIO_ENV=V0p2_Rev11_Sensor
