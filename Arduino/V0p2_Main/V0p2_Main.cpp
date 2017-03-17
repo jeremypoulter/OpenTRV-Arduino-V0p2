@@ -4,7 +4,7 @@ under the Apache Licence, Version 2.0 (the "Licence");
 you may not use this file except in compliance
 with the Licence. You may obtain a copy of the Licence at
 
-http://www.apache.org/licenses/LICENSE-2.0
+http://www.apache.org/licenses/LICENSE-2.0 
 
 Unless required by applicable law or agreed to in writing,
 software distributed under the Licence is distributed on an
@@ -217,7 +217,8 @@ void optionalPOST()
 #if defined(ENABLE_WAKEUP_32768HZ_XTAL)
 #ifdef ENABLE_TUNE_FAST_OSC_TO_RTC_SOURCE
   // Check that the slow clock is running reasonably OK, and tune the fast one to it.
-  if(!::OTV0P2BASE::HWTEST::calibrateInternalOscWithExtOsc()) { panic(F("Xtal")); } // Async clock not running or can't tune.
+  //if(!::OTV0P2BASE::HWTEST::calibrateInternalOscWithExtOsc()) { panic(F("Xtal")); } // Async clock not running or can't tune.
+    if(!::OTV0P2BASE::HWTEST::check32768HzOsc()) { panic(F("xtal")); } // Async clock not running correctly.
 #else
   // Just check that the slow clock is running reasonably OK.
   if(!::OTV0P2BASE::HWTEST::check32768HzOsc()) { panic(F("xtal")); } // Async clock not running correctly.
